@@ -45,7 +45,7 @@ for INTERPRETER in "${!TESTS[@]}"; do
         if [ "--list" == "$OPTION" ]; then
           echo "- $TEST"
         else
-          echo "[$(date --iso-8601=seconds)] -- $TEST"
+          echo "[$(date +%Y-%m-%dT%H:%M:%S%z)] -- $TEST"
           ${INTERPRETER} "$TEST"
         fi
       fi
