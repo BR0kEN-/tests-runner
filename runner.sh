@@ -7,20 +7,20 @@ set -e
 #
 # Usage:
 #   - Run all tests.
-#     bash runner.sh
+#     bash runner.sh "./tests/travis"
 #
 #   - Run non-bash tests.
-#     TRAVIS_COMMIT_MESSAGE="[skip bash]" bash runner.sh
+#     TRAVIS_COMMIT_MESSAGE="[skip bash]" bash runner.sh "./tests/travis"
 #
 #   - List available tests.
-#     bash runner.sh --list
+#     bash runner.sh "./tests/travis" --list
 #
 #   - List non-bash tests.
-#     TRAVIS_COMMIT_MESSAGE="[skip bash]" bash runner.sh --list
+#     TRAVIS_COMMIT_MESSAGE="[skip bash]" bash runner.sh "./tests/travis" --list
 
-cd ./tests/travis
+cd "$1"
 declare -A TESTS=()
-declare -r OPTION="$1"
+declare -r OPTION="$2"
 
 # Iterate all over subdirectories.
 for INTERPRETER in [a-z]*/; do
